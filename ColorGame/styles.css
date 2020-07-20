@@ -19,6 +19,17 @@ h1 {
 	color: white;
 }
 
-#message {
+/* #message {
 	color: white;
+} */
+
+#menu {
+	margin: 0px auto; 
+	padding: 10px;
+	background-color: aliceblue;
+
+}
+
+.on {
+	background-color: blue;
 }
