@@ -8,6 +8,7 @@ var message = document.querySelector("#message");
 var resetGame = document.querySelector("#resetGame");
 var easy = document.querySelector("#easy");
 var hard = document.querySelector("#hard");
+var h1 = document.querySelector("h1");
 
 hard.classList.add("on");
 
@@ -43,14 +44,13 @@ for (var i = 0; i < num; i++) {
     squares[i].addEventListener("click", function () {
         //grab color of clicked squares
         var clickedColor = this.style.background;
-
         //compare color to pickedColor
         if (clickedColor == pickedColor) {
             message.textContent = "Correct";
             resetGame.textContent = "Play Again?";
+			h1.style.backgroundColor = pickedColor;
             for (var i = 0; i < num; i++) {
                 squares[i].style.background = clickedColor;
-                colorDisplay.style.color = clickedColor;
             }
         } else {
             this.style.background = wrongColor;
@@ -74,16 +74,15 @@ function getPickedColor() {
 
 function reset() {
     resetGame.textContent = "New Colors";
-
+	message.textContent = "";
     colors = getRandomColors(num);
-    
     pickedColor = getPickedColor();
-
-    colorDisplay.textContent = pickedColor;
-    
+	colorDisplay.textContent = pickedColor;
+	h1.style.backgroundColor = "steelblue";
+	
     for (var i = 0; i < num; i++) {
         // add initial colors to squares
         squares[i].style.background = colors[i];
     }
-    //location.reload();
+
 }
