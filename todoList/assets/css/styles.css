@@ -1,0 +1,97 @@
+body {
+    background: #085078; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #085078, #85d8ce); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #085078, #85d8ce); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    background-color: steelblue;
+    color: white;
+    /* margin of the h1 will be between the element and the border */
+    margin: 0;
+    /* padding of the h1 will be between the text and the end of the element (can center the text) */
+    /* 10px up and down and 20px left and right */
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: normal;
+    
+}
+
+h1 i {
+    margin: 1%;
+    float: right;
+}
+
+ul {
+    /* take out the bullet poits */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    background: white;
+    height: 40px;
+    line-height: 40px;
+    color: #666;
+}
+
+/* this take every other li  */
+li:nth-child(2n) {
+    background: #dfdcdc;
+    
+}
+
+li:hover span {
+	width: 40px;
+	opacity: 1.0;
+}
+
+input {
+    font-size: 18px;
+    color: steelblue;
+    background-color: #f7f7f7;
+    width: 100%;
+    /* box sizing to fit in the container (without margin) */
+    box-sizing: border-box;
+    padding: 13px 13px 13px 20px;
+    /* invisible border - when its pressed will stay the same size */
+    border: 3px solid rgba(0, 0, 0, 0);
+}
+
+/* when input is clicked */
+input:focus{
+    background-color: white;
+    border: 3px solid steelblue;
+    outline: none;
+}
+
+span {
+    background: #e74c3c;
+    height: 40px;
+    margin-right: 20px;
+    text-align: center;
+    color: white;
+    width: 0;
+    display: inline-block;
+    transition: 0.2s linear;
+    opacity: 0; 
+}
+
+#app {
+    /* trick to center the container margin 
+       100 px to top and bottom, auto to left and right to center the container */
+    margin: 100px auto;
+    background-color: #f7f7f7;
+    width: 360px;
+    /* kind of a border */
+    box-shadow: 0 0 3px rba(0, 0, 0, 0.1); 
+    padding-bottom: 2%;
+    
+}
+
+.checked {
+    text-decoration: line-through;
+    color: rgba(78, 78, 78, 0.8);
+}
