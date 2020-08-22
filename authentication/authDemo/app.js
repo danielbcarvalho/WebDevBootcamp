@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
-app.get('/secret', (req, res) => res.render("secret"))
+app.get('/secret', isLoggedIn, (req, res) => res.render("secret"))
 
 //===============
 //Auth Routes
@@ -72,5 +72,18 @@ app.post('/login', passport.authenticate("local", {
 }), (req, res) => {
     
 })
+
+//LOPGOUT route
+app.get("/logout", (req, res) => {
+    req.logOut()
+    res.redirect('/')
+})
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next()
+    }
+    res.redirect("/login")
+}
 
 app.listen('8080', () => console.log("The Server Has Started..."))
