@@ -18,15 +18,17 @@ app.set('view engine', 'ejs')
 //set body-parser to get url 'body', used to req POST from forms
 // -> req.body.usarname, req.body.passport ... 
 app.use(bodyParser.urlencoded({ extended: true }))
+
+//need this everytime using passport
 app.use(require('express-session')({
     secret: "Mel is the best cat in the world",
     resave: false,
     saveUninitialized: false
 }))
-
 app.use(passport.initialize())
 app.use(passport.session())
 
+passport.use(new localStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
@@ -39,8 +41,11 @@ app.get('/', (req, res) => {
 
 app.get('/secret', (req, res) => res.render("secret"))
 
+//===============
 //Auth Routes
+//===============
 
+//SIGN UP Routes
 //show sign up form
 app.get('/register', (req, res) => {
     res.render("register")
@@ -54,6 +59,18 @@ app.post("/register", (req, res) => {
         console.log(err);
         return res.render('register')
     }) 
+})
+
+//LOGIN Routes
+//render login form
+app.get('/login', (req, res) => res.render('login'))
+//logic
+//middleware -> code that runs before the callback
+app.post('/login', passport.authenticate("local", {
+    successRedirect: "/secret",
+    failureRedirect: "/login"
+}), (req, res) => {
+    
 })
 
 app.listen('8080', () => console.log("The Server Has Started..."))
