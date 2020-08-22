@@ -79,6 +79,8 @@ app.get("/logout", (req, res) => {
     res.redirect('/')
 })
 
+
+//function middleware
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next()
